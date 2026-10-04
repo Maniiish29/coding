@@ -1,0 +1,32 @@
+import java.util.Arrays;
+
+class Solution {
+    static int minPlatform(int arr[], int dep[]) {
+        // Step 1: Sort arrival and departure times
+        Arrays.sort(arr);
+        Arrays.sort(dep);
+        
+        int n = arr.length;
+        int i = 1; // Start from the second train
+        int j = 0; // Start from the first departure
+        int p = 1;     // First train requires 1 platform
+        int maxp = 1;  // Maximum platforms needed so far
+        
+        // Step 2: Traverse both arrays
+        while (i < n && j < n) {
+            if (arr[i] <= dep[j]) {
+                // If a train arrives before or at the same time another departs
+                p++;
+                i++;
+            } else {
+                // If a train departs, free up a platform
+                p--;
+                j++;
+            }
+            // Update the maximum platforms required at any point
+            maxp = Math.max(maxp, p);
+        }
+        
+        return maxp;
+    }
+}
