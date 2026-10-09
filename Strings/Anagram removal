@@ -1,0 +1,37 @@
+class Solution {
+public int remAnagram(String s1, String s2) {
+// code here
+ 
+char[] s1Char = s1.toCharArray();
+ 
+char[] s2Char = s2.toCharArray();
+ 
+int count = 0;
+Arrays.sort(s1Char);
+Arrays.sort(s2Char);
+int i = 0;
+int j = 0;
+ 
+while (i<s1Char.length && j<s2Char.length) {
+ 
+if (s1Char[i] == s2Char[j]) {
+i++;
+j++;
+}
+else if(s1Char[i]<s2Char[j]) {
+count++;
+i++;
+}
+else {
+j++;
+count++;
+}
+}
+ 
+count += (s1Char.length - i); 
+          count += (s2Char.length - j);
+ 
+return count;
+ 
+}
+};
