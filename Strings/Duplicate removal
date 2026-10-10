@@ -1,0 +1,14 @@
+class Solution {
+    String removeDuplicates(String s) {
+        Set<Character>hs=new HashSet<>();
+        String res="";
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(hs.add(c)){
+                res+=c;
+            }
+            
+        }
+        return res;
+    }
+}
