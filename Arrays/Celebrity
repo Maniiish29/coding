@@ -1,0 +1,26 @@
+class Solution {
+    public int celebrity(int mat[][]) {
+        int n = mat.length;
+        int candidates = 0;
+        int row = -1;
+        for(int i=0; i<n; i++) {
+            for(int j = 0; j<n; j++) {
+                if(mat[i][j] == 1 && i!=j)
+                    break;
+                if(j==n-1) {
+                    candidates++;
+                    row = i;
+                }
+            }
+            if(candidates > 1)
+                return -1;
+        }
+        if(candidates == 0)
+            return -1;
+        for(int j=0; j<n; j++) {
+            if(mat[j][row] == 0)
+                return -1;
+        }
+        return row;
+    }
+}
